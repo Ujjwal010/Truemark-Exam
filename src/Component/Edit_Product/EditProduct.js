@@ -32,14 +32,14 @@ function EditProduct(props) {
 
   const formik = useFormik({
     initialValues: {
-      product_name: "",
-      product_description: "",
-      product_category: "",
-      product_status: "",
+      product_name: props.element.product_name,
+      product_category: props.element.category_name,
+      product_status: props.element.status,
+      product_description: props.element.description,
     },
     validate,
     onSubmit: (values) => {
-      fetch(`https://product-fhqo.onrender.com/products/${props.id}`, {
+      fetch(`https://product-fhqo.onrender.com/products/${props.element.id}`, {
         method: "PATCH",
         body: JSON.stringify({
           product_name: values.product_name,
@@ -92,6 +92,7 @@ function EditProduct(props) {
         <Modal.Header closeButton>
           <Modal.Title>EDIT PRODUCT</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3">

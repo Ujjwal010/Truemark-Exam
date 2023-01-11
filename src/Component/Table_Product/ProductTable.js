@@ -35,7 +35,7 @@ function ProductTable(props) {
                 <td>{moment(i.created_at).format("YYYY-MM-DD")}</td>
                 <td>{i.status}</td>
                 <td>
-                  <EditProduct id={i.id} />
+                  <EditProduct element={i} />
                 </td>
                 <td>
                   <DeleteProduct id={i.id} />
